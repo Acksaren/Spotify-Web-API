@@ -10,22 +10,21 @@ import { MusicDataService } from '../music-data.service';
 })
 export class SearchResultComponent implements OnInit {
 
-  constructor( private route: ActivatedRoute, private dataService: MusicDataService) { }
-
   results : any;
   searchQuery: string  = "";
   paramSubscription: Subscription = new Subscription;
 
+  constructor(route: ActivatedRoute, dataService: MusicDataService) {
+    this.paramSubscription = route.queryParamMap.subscribe(query => {
+      this.searchQuery = String(query.get('q'));
+
+      dataService.searchArtists(this.searchQuery).subscribe({
+        next: data => this.results = data.artists.items.filter((artist: any) => artist.images.length)
+      });
+    });
+  }
+
   ngOnInit(): void {
-    this.paramSubscription = this.route.params.subscribe(
-      (params: Params) =>{
-        this.searchQuery = params['q'] 
-        this.dataService.searchArtists(this.searchQuery).subscribe(data =>
-          this.results = data.artists.items.filter((items: { images: any[]; }) => items.images.length > 0)
-        );
-        
-      }
-    );
   }
 
   ngOnDestroy(): void {

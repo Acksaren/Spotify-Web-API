@@ -23,13 +23,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
 import { NewReleasesComponent } from './new-releases/new-releases.component';
 import { AlbumComponent } from './album/album.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { InterceptTokenService } from './intercept-token.service';
 
 
 @NgModule({
@@ -65,7 +66,13 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     MatSnackBarModule 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptTokenService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
