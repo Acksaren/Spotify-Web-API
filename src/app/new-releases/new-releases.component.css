@@ -1,0 +1,8 @@
+ul{
+    padding:0;
+    flex-grow: 1;
+    flex: 1 0 15%;
+}
+.container{
+    flex-wrap: wrap;
+}
