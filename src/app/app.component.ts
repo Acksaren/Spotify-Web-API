@@ -1,11 +1,17 @@
 
-/************************************************************************ *********
+/*********************************************************************************
 * WEB422 – Assignment 06
 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part of this
 * assignment has been copied manually or electronically from any other source (including web sites) or
-* distributed to other students. *
-* Name: Acksaren Ravinjan Student ID: #162017198 Date: Nov 19th
-* ********************************************************************************/
+* distributed to other students.
+*
+* Name: Acksaren Ravinjan Student ID: #162017198 Date: December 13, 2021
+*
+* Angular App (Deployed) Link: _____________________________________________________
+*
+* User API (Heroku) Link: https://git.heroku.com/afternoon-badlands-80457.git
+*
+********************************************************************************/ 
 import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router, Event } from '@angular/router';
 import { AuthService } from './auth.service';
